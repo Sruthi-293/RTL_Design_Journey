@@ -112,7 +112,7 @@ After completing synthesis, I generated a graphical view of the circuit using Yo
 
 The graphical representation makes it easier to observe how the RTL design has been transformed into internal logic and how different signals are connected.
 
-![Synthesized Design](images/Synthesized_design.jpeg)
+![Synthesized Design](https://github.com/Sruthi-293/RTL_Design_Journey/blob/main/Day_2/Day_2/images/Synthesized_design.png)
 
 The above image shows the synthesized structure of the 2:1 multiplexer. It displays the input signals i0, i1, and sel, along with the output y. This visualization helped me understand the internal structure produced by the synthesis process.
 
@@ -122,7 +122,7 @@ The synthesis process also produces a Verilog netlist. Unlike the original RTL c
 
 I inspected the generated netlist to understand how Yosys represented the multiplexer after synthesis.
 
-![Yosys Netlist](images/yosys_netlist.jpeg) 
+![Yosys Netlist](https://github.com/Sruthi-293/RTL_Design_Journey/blob/main/Day_2/Day_2/images/yosys_netlist.jpeg) 
 
 The image shows the Verilog code generated after synthesis. It contains the module ports, internal wires, and synthesized cell connections. By examining this output, I understood how the original RTL description is transformed into a hardware-oriented representation.
 
