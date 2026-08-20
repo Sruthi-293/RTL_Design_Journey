@@ -35,6 +35,11 @@ Check the installation using:
 
 iverilog -V
 
+![Verilog_Flow](images/flow.jpeg)
+
+The following flow illustrates the basic journey of a Verilog design from RTL coding to simulation and waveform analysis.
+
+This flow helped me understand how the RTL design, testbench, simulator and waveform viewer are connected during the simulation process.
 ⸻
 
 3️⃣ Design and Testbench
@@ -57,6 +62,15 @@ Example:
 
 tb_mux.v
 
+### 🧪 Testbench Structure
+
+The following image shows the basic structure of a Verilog testbench used to verify the RTL design.
+
+The testbench generates different input combinations and applies them to the design under test (DUT). It then observes the corresponding outputs to check whether the design is functioning as expected.
+
+![Verilog Testbench](images/testbench.jpeg)
+
+This practical helped me understand how a testbench is connected to the RTL design during simulation.
 
 ⸻
 
