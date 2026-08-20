@@ -24,7 +24,7 @@ Main activities performed by Yosys:
 * Mapping logic to available cells
 * Generating the final synthesized netlist
 
- ![Yosys Terminal](./images/yosys.jpeg)
+ ![Yosys Terminal](https://github.com/Sruthi-293/RTL_Design_Journey/blob/main/Day_2/Day_2/images/yosys.jpeg)
  
 ⸻
 
