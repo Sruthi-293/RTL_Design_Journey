@@ -114,9 +114,9 @@ S = 1 → Y = B
 
 After simulation, the waveform was analyzed using GTKWave.
 
-📸 Waveform Screenshot
+![GTKWave Simulation Result](images/simulation_result.jpeg)
 
-Add your GTKWave screenshot here.
+
 
 ⸻
 
