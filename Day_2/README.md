@@ -122,7 +122,7 @@ The synthesis process also produces a Verilog netlist. Unlike the original RTL c
 
 I inspected the generated netlist to understand how Yosys represented the multiplexer after synthesis.
 
-![Yosys Netlist](https://github.com/Sruthi-293/RTL_Design_Journey/blob/main/Day_2/Day_2/images/yosys_netlist.jpeg) 
+![Yosys Netlist](https://github.com/Sruthi-293/RTL_Design_Journey/blob/main/Day_2/Day_2/images/yosys_netlist.png) 
 
 The image shows the Verilog code generated after synthesis. It contains the module ports, internal wires, and synthesized cell connections. By examining this output, I understood how the original RTL description is transformed into a hardware-oriented representation.
 
