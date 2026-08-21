@@ -1,4 +1,4 @@
-Day 4 — Logic Optimization with Yosys ⚙️
+**Day 4 — Logic Optimization with Yosys ⚙️**
 
 🎯 Objectives
 
@@ -231,7 +231,233 @@ The main topics covered were:
 7. Constant Flip-Flop Optimization 🔄
 
    The next experiment focused on flip-flops whose values can be determined to be constant.
-    
-    
 
+   The available designs were first searched using:
+
+    ls **df*const**
+
+    The RTL files were then examined using:
+
+    gvim dff_const1.v -o dff_const2.v
+
+    This allowed the different flip-flop implementations to be compared side by side.
+
+⸻
+
+8. Simulation of dff_const1 🧪
+
+   The first constant flip-flop design was simulated using Icarus Verilog.
+
+    iverilog dff_const1.v tb_dff_const1.v
+   
+   ./a.out
+   
+   gtkwave tb_dff_const1.vcd
+
+   Figure 5: Simulation waveform of the dff_const1 design.
+
+   The waveform helps verify the sequential behavior before performing synthesis optimization.
+
+⸻
+
+9. Synthesis of dff_const1 ⚙️
+
+   After simulation, the design was synthesized using Yosys.
+
+   yosys
+
+   read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+   read_verilog dff_const1.v
+
+   synth -top dff_const1
+
+   dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+  
+   abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+   show
+
+   The dfflibmap command maps flip-flops to suitable cells from the standard-cell library.
+
+
+   The abc command performs logic optimization and technology mapping.
+
+   Figure 6: Synthesized representation of dff_const1.
+
+   The synthesized result shows how the RTL flip-flop was represented using library cells.
+
+⸻
+
+10. Synthesis of dff_const2 🔧
+
+   The second constant flip-flop design was synthesized using:
+  
+   read_verilog dff_const2.v
+  
+   synth -top dff_const2
+   
+   abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   show
+   
+   The design was examined after synthesis to observe how Yosys handled the constant sequential logic.
+   
+   Figure 7: Synthesized representation of dff_const2.
+
+   
+   The output provides a visual representation of the optimized sequential hardware.
+
+⸻
+
+11. dff_const3 Simulation and Synthesis 🧪
+
+   The third flip-flop example was first simulated.
+   
+   Figure 8: Simulation waveform of dff_const3.
+
+   
+   The design was then synthesized using Yosys.
+   
+   yosys
+   
+   read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   read_verilog dff_const3.v
+   
+   synth -top dff_const3
+   
+   dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   show
+   
+   Figure 9: Synthesized representation of dff_const3.
+
+   This experiment showed both the simulation behavior and synthesized implementation of the constant flip-flop design.
+
+⸻
+
+12. Unused Output Optimization 🚫
+
+   Another important optimization technique studied was the removal of unused outputs and unnecessary logic.
+
+   If a portion of the RTL does not contribute to any required output, synthesis tools can identify it as redundant and remove it.
+
+   This reduces unnecessary hardware and can improve the efficiency of the final circuit.
+
+⸻
+
+13. Synthesis of counter_opt 🔢
+
+   The counter_opt.v design was synthesized using the following commands:
+   
+   yosys
+   
+   read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   read_verilog counter_opt.v
+   
+   synth -top counter_opt
+   
+   dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   show
+   
+   Figure 10: Synthesized representation of counter_opt.
+
+   The output helps demonstrate how Yosys handles unused or unnecessary portions of a counter design.
+
+⸻
+
+14. Optimized counter Design 🔄
+
+   The optimized version of the counter was then created using:
+
+   co counter_opt.v counter_opt2.v
+
+   The resulting file was opened using
+
+   gvim counter_opt2.v
+
+   This step was useful for examining the modified RTL implementation
+
+   Figure 11:Modified counter_opt2.v RTL design
+
+   yosys
+   
+   read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   read_verilog counter_opt2.v
+   
+   synth -top counter_opt2
+   
+   dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   
+   show
+
+   Figure 12: Synthesized representation of the optimized counter_opt2 design.
+
+   By comparing the original and optimized versions, the effect of removing unnecessary logic can be understood more clearly.
+
+⸻
+
+15. Overall Optimization Flow 🔁
+
+   The complete optimization flow followed during this experiment can be summarized as:
+   
+                    Verilog RTL
+                         ↓
+                    Read RTL using Yosys
+                         ↓
+                    Synthesis
+                         ↓
+                    Optimization
+                         ↓
+                    Remove redundant / unused logic
+                         ↓
+                    Technology Mapping
+                         ↓
+                    SKY130 Standard Cells
+                         ↓
+                    Gate-Level Representation
+                         ↓
+                    Yosys "show"
+
+This process demonstrates how a high-level RTL description can be transformed into an efficient gate-level implementation.
+
+⸻
+
+16. Key Learnings 💡
+
+   Through the Day 4 experiments, I learned that logic synthesis is not simply a process of converting RTL code into gates. The synthesis tool also performs          several intelligent transformations to reduce unnecessary hardware.
+
+   The major concepts learned were:
+
+    * 🔹 Constant propagation simplifies logic using known constant values.
+    * 🔹 Boolean optimization reduces complex logic expressions.
+    * 🔹 Combinational optimization removes redundant hardware.
+    * 🔹 Sequential optimization simplifies unnecessary flip-flops and control logic.
+    * 🔹 State optimization can reduce unnecessary states.
+    * 🔹 Logic cloning can be used to improve implementation characteristics.
+    * 🔹 Retiming can help improve timing by changing register placement.
+    * 🔹 Unused-output optimization removes hardware that does not affect required outputs.
+    * 🔹 Technology mapping converts optimized logic into cells from the SKY130 library.
+    * 🔹 Yosys show provides a useful visual representation of the synthesized circuit.
+
+⸻
+
+17. Conclusion 🏁
+
+   Day 4 provided practical experience with RTL logic optimization using Yosys. Different combinational and sequential optimization techniques were explored          through multiple Verilog examples.
+
+   The experiments demonstrated how Yosys can analyze RTL, identify redundant hardware, simplify logic, optimize sequential elements, and finally map the design      to standard cells.
+
+   Overall, this session helped strengthen my understanding of the RTL-to-gate-level synthesis flow and showed how optimization plays an important role in            developing efficient digital hardware. 🚀                    
     
