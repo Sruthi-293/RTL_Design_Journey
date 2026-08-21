@@ -119,29 +119,24 @@ Linux Terminal	Running EDA Commands
 
 📂 Repository Structure
 
-RTL_Design_Journey/
-│
-├── README.md
-│
-├── Day_1/
-│   ├── README.md
-│   └── images/
-│
-├── Day_2/
-│   ├── README.md
-│   └── images/
-│
-├── Day_3/
-│   ├── README.md
-│   └── images/
-│
-├── Day_4/
-│   ├── README.md
-│   └── images/
-│
-└── Day_5/
-    ├── README.md
-    └── images/
+* README.md
+
+* Day_1/
+    * README.md
+    * images/
+* Day_2/
+    * README.md
+    * images/
+* Day_3/
+    * README.md
+    * images/
+* Day_4/
+    * README.md
+    * images/
+* Day_5/
+    * README.md
+
+
 ⸻
 
 🎯 Learning Outcomes
