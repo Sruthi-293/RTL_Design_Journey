@@ -11,7 +11,7 @@ RTL Code → Simulation → Waveform Analysis → Synthesis → Optimization
 
 ⸻
 
-📚 Workshop Contents
+**📚 Workshop Contents**
 
 🟦 Day 1 — RTL Design Through Simulation
 
@@ -25,7 +25,7 @@ Topics covered:
 * Basic RTL design experiments
 * Understanding simulation results
 
-➡️ Go to Day 1
+➡️ [Go to Day 1](./Day_1/README.md)
 
 ⸻
 
@@ -42,7 +42,7 @@ Topics covered:
 * Yosys synthesis flow
 * Technology mapping
 
-➡️ Go to Day 2
+➡️ [Go to Day 2](./Day_2/README.md)
 
 ⸻
 
@@ -58,7 +58,48 @@ Topics covered:
 * Gate-level understanding
 * Practical synthesis experiments
 
-➡️ Go to Day 3
+➡️ [Go to Day 3](./Day_3/README.md)
+
+🟧 Day 4 — Logic Optimization & Design Efficiency
+
+Topics covered:
+
+* Introduction to logic optimization
+* Combinational logic optimization
+* Constant propagation
+* Boolean logic optimization
+* Sequential logic optimization
+* Constant flip-flop optimization
+* State optimization
+* Logic cloning
+* Retiming
+* Unused output optimization
+* RTL optimization using Yosys
+* SKY130 technology mapping
+* Optimized gate-level representation
+
+➡️ [Go to Day 4](./Day_4/README.md)
+
+⸻
+
+🟥 Day 5 — Gate-Level Simulation & Synthesis Mismatches
+
+Topics covered:
+
+* Introduction to Gate-Level Simulation (GLS)
+* RTL simulation vs Gate-Level Simulation
+* Synthesis-simulation mismatches
+* Missing sensitivity list
+* Blocking and non-blocking assignments
+* Caveats with blocking statements
+* Ternary operator based MUX design
+* RTL-to-gate-level netlist generation
+* SKY130 standard-cell Verilog models
+* Gate-Level Simulation using Icarus Verilog
+* Yosys synthesized netlist verification
+* Waveform comparison and analysis
+
+➡️ [Go to Day 4](./Day_4/README.md)
 
 ⸻
 
@@ -78,19 +119,29 @@ Linux Terminal	Running EDA Commands
 
 📂 Repository Structure
 
-RTL_Design_Journey
+RTL_Design_Journey/
 │
 ├── README.md
 │
 ├── Day_1/
-│   └── README.md
+│   ├── README.md
+│   └── images/
 │
 ├── Day_2/
-│   └── README.md
+│   ├── README.md
+│   └── images/
 │
-└── Day_3/
-    └── README.md
-
+├── Day_3/
+│   ├── README.md
+│   └── images/
+│
+├── Day_4/
+│   ├── README.md
+│   └── images/
+│
+└── Day_5/
+    ├── README.md
+    └── images/
 ⸻
 
 🎯 Learning Outcomes
@@ -99,13 +150,20 @@ Through this workshop, I aim to understand:
 
 * How RTL code is written in Verilog
 * How RTL designs are simulated
-* How waveforms are analyzed
-* How Yosys performs synthesis
+* How testbenches are used for verification
+* How waveforms are analyzed using GTKWave
+* How timing libraries describe standard cells
+* How Yosys performs RTL synthesis
 * How RTL is converted into logic gates
-* How technology libraries are used
+* How technology libraries are used for mapping
 * How different coding styles affect synthesis
-* How RTL optimization improves hardware implementation
-
+* How combinational logic can be optimized
+* How sequential logic can be optimized
+* How unnecessary hardware can be removed
+* How synthesized netlists can be verified
+* How Gate-Level Simulation works
+* How synthesis-simulation mismatches can occur
+* How RTL coding practices influence the final hardware implementation
 ⸻
 
 👩‍💻 Author
