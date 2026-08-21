@@ -130,7 +130,7 @@ The main topics covered were:
 
     show
 
-    https://raw.githubusercontent.com/Sruthi-293/RTL_Design_Journey/refs/heads/main/Day_4/images/opt_check.png
+    ![Opt_check](https://raw.githubusercontent.com/Sruthi-293/RTL_Design_Journey/refs/heads/main/Day_4/images/opt_check.png)
 
     Figure 1: Optimized gate-level representation of the opt_check design.
 
