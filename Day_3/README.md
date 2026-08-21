@@ -113,11 +113,17 @@ The SKY130 standard-cell library was used for technology mapping.
 
  yosys
 read_liberty -lib /address/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+
 read_verilog dff_asyncres.v
+
 synth -top dff_asyncres
+
 dfflibmap -liberty /address/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+
 abc -liberty /address/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+
 show
+
 The synthesized design was then viewed using the Yosys graphical representation.
 
 ![Synthesized Flip-Flop Design](./images/Figure_4.jpeg)
@@ -151,11 +157,17 @@ endmodule
 The expression a * 2 represents multiplication by a constant. During synthesis, Yosys analyzes the operation and produces an optimized hardware implementation instead of treating it as a general-purpose multiplier.
 yosys
 read_verilog mul2.v
+
 prep -top mul2
+
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
 show
+
 write_verilog -noattr mul2_net.v
+
 gvim mul2_net.v
+
 The synthesized circuit was viewed using the Yosys show command.
 
 ![mul2 Synthesis Flip-Flop Design](./images/Figure_5.jpeg)
@@ -177,12 +189,19 @@ assign y = a * 9;
 endmodule
 Here, the input a is multiplied by 9. Yosys analyzes the arithmetic expression and generates an optimized hardware structure during synthesis.
 yosys
+
 read_verilog mult8.v
+
 prep -top mult8
+
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
 show
+
 write_verilog -noattr mult8_net.v
+
 gvim mult8_net.v
+
 The resulting schematic was examined to understand how the original arithmetic operation was represented after synthesis.
 
 ![mult8 Synthesis and optimization](./images/Figure_6.jpeg)
@@ -197,9 +216,12 @@ After synthesis, Yosys can generate a new Verilog file containing the synthesize
 For the two multiplication examples:
 
 write_verilog -noattr mul2_net.v
+
 write_verilog -noattr mult8_net.v
+
 The generated netlists can be inspected using:
 gvim mul2_net.v
+
 gvim mult8_net.v
 
 Examining the synthesized Verilog helps in understanding how the original RTL description is transformed into a lower-level hardware representation.
