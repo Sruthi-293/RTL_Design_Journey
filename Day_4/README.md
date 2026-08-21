@@ -130,8 +130,7 @@ The main topics covered were:
 
     show
 
-    ![Opt Check]()
-    
+    ![Opt Check](./images/opt_check.png)
     Figure 1: Optimized gate-level representation of the opt_check design.
 
     The synthesized view shows how Yosys simplified the RTL and converted the remaining logic into a gate-level representation.
