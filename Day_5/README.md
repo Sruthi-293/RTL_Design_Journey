@@ -1,0 +1,497 @@
+🟪 Day 5 — Gate-Level Simulation & Synthesis Mismatches
+
+From RTL Behavior to Gate-Level Reality 🔍
+
+🎯 Objectives
+
+The objective of Day 5 was to understand Gate-Level Simulation (GLS) and investigate situations where the behavior observed during RTL simulation may differ from the synthesized gate-level implementation.
+
+The major topics covered during this session were:
+
+* 🔹 Introduction to Gate-Level Simulation (GLS)
+* 🔹 Synthesis–Simulation Mismatches
+* 🔹 Gate-Level Simulation using Verilog
+* 🔹 Missing Sensitivity List
+* 🔹 Blocking and Non-Blocking Statements
+* 🔹 Caveats with Blocking Statements
+* 🔹 RTL-to-Gate-Level Netlist Generation
+* 🔹 Simulation using SKY130 Standard-Cell Models
+* 🔹 Comparison of RTL and Gate-Level Behavior
+
+⸻
+
+1. 🔬 Introduction to Gate-Level Simulation (GLS)
+
+In RTL simulation, the design is simulated using the original Verilog RTL description.
+
+However, after synthesis, the RTL is converted into a gate-level netlist containing logic gates and technology-specific standard cells.
+
+Gate-Level Simulation helps verify that the synthesized implementation behaves as expected.
+
+RTL Simulation
+
+Verilog RTL
+     │
+     ▼
+ Icarus Verilog
+     │
+     ▼
+ Simulation
+     │
+     ▼
+  Waveform
+
+ Gate-Level Simulation
+ 
+ Verilog RTL
+     │
+     ▼
+   Yosys
+     │
+     ▼
+Synthesized Netlist
+     │
+     ▼
+SKY130 Cell Models
+     │
+     ▼
+ Gate-Level Simulation
+     │
+     ▼
+  Waveform
+The important difference is that GLS operates on the synthesized hardware representation, rather than directly on the original RTL.
+
+⸻
+
+2. ⚠️ Synthesis–Simulation Mismatches
+
+A synthesis-simulation mismatch occurs when the behavior observed during RTL simulation is different from the behavior of the synthesized design.
+
+This can happen because of coding styles that are interpreted differently by simulation and synthesis tools.
+
+Common causes include:
+
+* Missing sensitivity-list signals
+* Incorrect use of blocking assignments
+* Incorrect use of non-blocking assignments
+* Incomplete combinational descriptions
+* Unintended inferred hardware
+* Incorrect reset or clock descriptions
+* Simulation-only constructs
+
+Therefore, it is important to verify not only the RTL simulation but also the synthesized implementation.
+
+💡 Key Learning: RTL simulation tells us what the code appears to do, while GLS helps verify what the synthesized hardware actually does.
+
+⸻
+
+3. 🧪 GLS Using Verilog
+
+Gate-Level Simulation requires three major components:
+ 
+Gate-Level Netlist
+        +
+Technology Library Models
+        +
+Testbench
+        ↓
+Gate-Level Simulation
+
+For the experiments,the SKY130 standrad-cell verilog models were used.
+
+The relevant model files are:
+
+../my_lib/verilog_model/primitives.v
+
+../my_lib/verilog_model/sky130_fd_sc_hd.v
+
+These files provide the behavioral models of the technology cells used by the synthesized netlist.
+
+Figure 1: Gate-Level Simulation environment and synthesized design flow.
+
+⸻
+
+4. 🔀 Ternary Operator MUX
+
+The first practical experiment focused on a multiplexer described using a ternary operator.
+
+A multiplexer selects one of multiple inputs based on a select signal.
+
+For a 2:1 multiplexer:
+
+             ┌──────────────┐
+     a ─────►│              │
+             │    2:1 MUX   │────► y
+     b ─────►│              │
+             │              │
+     sel ───►│              │
+             └──────────────┘
+
+ A ternary operator can describe the same behavior compactly.
+
+ assign y=sel?b:a
+
+ This example was used to study how RTL coding, synthesis, and gate-level simulation are connected.
+
+⸻
+
+5. Comparing MUX Coding Styles
+
+The different MUX implementations were compared using:
+
+gvim ternary_operator_mux.v -o bad_mux.v -o good_mux.v
+
+This allows the different coding styles to be viewed side-by-side
+
+Figure 2: Comparison of MUX RTL coding styles using the ternary operator.
+
+This comparison helped identify how coding style can influence simulation behavior and synthesis interpretation.
+
+⸻
+
+6. 🧪 RTL Simulation of Ternary MUX
+
+The RTL implementation was simulated before synthesis.
+
+Commands:
+
+iverilog ternary_operator_mux.v tb_ternary_operator_mux.vcd
+
+./a.out
+
+gtkwave tb_ternary_operator_mux.vcd
+
+The simulation waveform was observed using GTKWave.
+
+The objective was to verify the functional behavior of the MUX before generating the gate-level netlist.
+
+⸻
+
+7. ⚙️ Synthesis of Ternary MUX
+
+After RTL verification, the design was synthesized using Yosys.
+
+Step1-Load SKY130 Library
+
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+Step2-Read RTL
+
+read_verilog ternary_operator_mux.v
+
+Read3-Synthesize
+
+synth -top ternary_operator_mux
+
+Step4-Technology Mapping
+
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+Step5-Generate Gate-Level Netlist
+
+write_verilog -noattr ternary_operator_mux_net.v
+
+The synthesized Verilog file contains the gate-level representation generated by Yosys.
+
+⸻
+
+8. 🧩 Viewing the Synthesized MUX
+
+The synthesized design was displayed using:
+
+show
+
+This provides a graphical representation of the synthesized circuit.
+
+Figure 3: Synthesized gate-level representation of the ternary-operator MUX.
+
+The schematic provides a visual connection between the original RTL MUX and its synthesized hardware implementation.
+
+⸻
+
+9. 🔬 Gate-Level Simulation of the MUX
+
+After generating the synthesized netlist, Gate-Level Simulation was performed using the SKY130 Verilog models.
+
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v 
+
+ternary_operator_mux_net.v 
+
+tb_ternary_operator_mux.v
+
+./a.out
+
+gtkwave tb_ternary_operator_mux.vcd
+
+The synthesized netlist was simulated together with the technology-liberty models and the original testbench.
+
+Figure 4: Gate-Level Simulation waveform of the synthesized ternary MUX.
+
+The waveform can be compared with the RTL simulation to verify whether the synthesized implementation maintains the expected functionality.
+
+⸻
+
+10. ⚠️ Missing Sensitivity List
+
+One important source of synthesis-simulation mismatch is a missing sensitivity-list signal.
+
+For combinational logic written using an always block, all signals that affect the output should be included in the sensitivity list.
+
+For example:
+always @(a)
+   y=a&b;
+
+Here, b affects the output but is missing from the sensitivity list.
+
+During simulation, a change in b may not trigger the block.
+
+However, synthesis understands the logic relationship differently and may still infer the intended hardware.
+
+This can create a difference between:
+
+RTL Simulation
+      ≠
+Synthesized Hardware
+
+💡 Lesson
+
+Always ensure that combinational logic is described completely so that simulation behavior accurately represents the intended hardware.
+
+⸻
+
+11. 🔄 Blocking and Non-Blocking Statements
+
+Verilog provides two important assignment styles:
+
+Blocking Assignment
+
+=
+
+A blocking assignment updates the variable immediately within the procedural execution order.
+
+It is commonly used for combinational logic.
+
+Non-Blocking Assignment
+
+<=
+
+A non-blocking assignment schedules the update to occur after the current procedural evaluation.
+
+It is commonly used for sequential logic such as flip-flops.
+
+General guideline
+
+Assignment        Common Usage
+
+   =               Combinational logic
+
+  <=               Sequential logic
+
+Correct use of these assignments helps avoid unintended simulation behavior.
+
+⸻
+
+12. Caveats with Blocking Statements
+
+Blocking assignments can create unexpected behavior when used incorrectly in sequential or dependent logic.
+
+For example, the order in which blocking statements execute can affect the values observed by subsequent statements.  
+
+Consider:
+
+always @(posedge clk)
+begin
+    a = b;
+    c = a;
+end
+
+Because blocking assignments execute immediately, c can receive the newly assigned value of a.
+
+This behavior can differ from what a designer expects when thinking in terms of simultaneous register updates.
+
+Therefore, understanding the difference between:
+
+Blocking     → Immediate procedural update
+
+Non-blocking → Scheduled sequential update
+
+is essential for writing reliable RTL.
+
+⸻
+
+13. 🔍 Blocking Statement Experiment
+
+The different RTL examples were examined using:
+
+gvim bad_mux.v
+
+gvim blocking_caveat.v
+
+Figure 5: Verilog RTL code demonstrating the blocking-assignment caveat.
+
+The code was studied to understand how procedural assignment order can affect simulation behavior.
+
+⸻
+
+14. 🧪 Simulation of blocking_caveat
+
+The design was simulated using Icarus Verilog.
+
+Commands:
+
+iverilog blocking_caveat.v tb_blocking_caveat.v
+
+./a.out
+
+gtkwave tb_blocking_caveat.vcd
+
+The resulting waveform was examined using GTKWave.
+
+Figure 6: Simulation waveform demonstrating the blocking-assignment behavior.
+
+The waveform helps visualize the effect of procedural execution order on the output signals.
+
+⸻
+
+15. ⚙️ Synthesis of blocking_caveat
+
+The RTL was synthesized using Yosys.
+
+yosys
+
+Then:
+
+read_verilog blocking_caveat.v
+
+synth -top blocking_caveat
+
+The ternary MUX RTL was also synthesized:
+
+read_verilog ternary_operator_mux.v
+
+synth -top ternary_operator_mux
+
+The synthesized blocking-ceveat design was then written as a verlog netlist:
+
+write_verilog -noattr blocking_caveat_net.v
+
+Finally, the synthesized design was deplayed using:
+
+show
+
+16. 🧩 Synthesized Logic-Gate Representation
+
+The show command provided the synthesized gate-level representation.
+
+Figure 7: Synthesized logic-gate representation of blocking_caveat.
+
+This schematic helps connect the procedural Verilog description with the hardware structure inferred by synthesis.
+
+⸻
+
+17. 🔬 Gate-Level Simulation of Blocking Caveat
+
+After synthesis, the generated netlist was used for further simulation.
+
+The SKY130 technology models were included so that the synthesized cells could be simulated.
+
+The relevant files were:
+
+primitives.v
+
+sky130_fd_sc_hd.v
+
+blocking_caveat_net.v
+
+tb_blocking_caveat.v
+
+The simulation was then executed and the resulting waveform was opened in GTKWave.
+
+./a.out
+
+gtkwave tb_blocking_caveat.vcd
+
+18. 🔁 RTL-to-GLS Verification Flow
+
+The complete experiment can be represented as:
+RTL CODE
+                    │
+                    ▼
+             RTL SIMULATION
+                    │
+                    ▼
+             Functional Check
+                    │
+                    ▼
+                 YOSYS
+                    │
+                    ▼
+               SYNTHESIS
+                    │
+                    ▼
+           GATE-LEVEL NETLIST
+                    │
+                    ▼
+          SKY130 CELL MODELS
+                    │
+                    ▼
+          GATE-LEVEL SIMULATION
+                    │
+                    ▼
+              GTKWave
+                    │
+                    ▼
+          Compare Waveforms
+                    │
+             ┌──────┴──────┐
+             │             │
+           Match        Mismatch
+             │             │
+             ▼             ▼
+        Design OK     Debug RTL
+
+This flow shows why GLS is useful in a complete RTL-to-hardware verification process.
+
+⸻
+
+19. 🧠 Key Learnings
+
+Day 5 provided several important insights into RTL design and synthesis.
+
+🔹 Gate-Level Simulation
+
+GLS allows the synthesized implementation to be simulated and verified using technology-specific cell models.
+
+🔹 Synthesis-Simulation Mismatch
+
+A design can behave differently during RTL simulation and after synthesis if the RTL description is incomplete or incorrectly coded.
+
+🔹 Sensitivity Lists
+
+Missing signals in a combinational sensitivity list can cause simulation behavior that does not correctly represent the intended hardware.
+
+🔹 Blocking Assignments
+
+Blocking assignments execute immediately and therefore the order of statements can affect simulation results.
+
+🔹 Non-Blocking Assignments
+
+Non-blocking assignments are generally preferred for clocked sequential logic because they model simultaneous register updates more naturally.
+
+🔹 Technology Models
+
+The SKY130 Verilog models allow the synthesized standard-cell implementation to be simulated at gate level.
+
+🏁 Conclusion
+
+Day 5 helped me move beyond RTL simulation and understand what happens after synthesis.
+
+The experiments demonstrated the complete relationship between:
+
+RTL Code → Simulation → Synthesis → Gate-Level Netlist → Standard-Cell Models → Gate-Level Simulation → Waveform Verification
+
+The study of synthesis-simulation mismatches, sensitivity lists, blocking assignments, and gate-level simulation showed that writing functionally correct RTL is only one part of digital design.
+
+A good RTL designer must also understand how synthesis interprets the code and how the resulting hardware behaves.
+
+🚀 The journey continued from writing RTL to verifying the hardware that synthesis actually creates.
