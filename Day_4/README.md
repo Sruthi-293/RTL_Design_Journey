@@ -129,8 +129,8 @@ The main topics covered were:
     Step 7-Displaying the optimized design
 
     show
-
-    ![Opt Check](https://raw.githubusercontent.com/Sruthi-293/RTL_Design_Journey/refs/heads/main/Day_4/images/opt_check.png)
+    
+    ![Opt Check](images/opt_check.png) 
 
     Figure 1: Optimized gate-level representation of the opt_check design.
     
@@ -153,6 +153,8 @@ The main topics covered were:
     show
     
     The RTL was synthesized, unnecessary logic was removed, and the remaining logic was mapped using the SKY130 library.
+
+    ![Opt Check](images/opt_check2.png)
     
     Figure 2: Optimized representation of the opt_check2 design.
 
@@ -174,6 +176,8 @@ The main topics covered were:
     
     show
 
+    ![Opt Check](images/opt_check3.png)
+    
     Figure 3: Optimized gate-level representation of the opt_check3 design.
 
     The result demonstrates the ability of Yosys to simplify the RTL before mapping it to standard cells.
@@ -194,6 +198,8 @@ The main topics covered were:
     
     show
 
+    ![Opt Check](images/opt_check4.png)
+    
     Figure 4: Optimized representation of the opt_check4 design.
 
     This experiment provided another example of how redundant logic can be identified and removed during synthesis.
@@ -256,6 +262,8 @@ The main topics covered were:
    
    gtkwave tb_dff_const1.vcd
 
+   Waveform_tb_diff_const1
+   
    Figure 5: Simulation waveform of the dff_const1 design.
 
    The waveform helps verify the sequential behavior before performing synthesis optimization.
@@ -286,7 +294,9 @@ The main topics covered were:
 
    The abc command performs logic optimization and technology mapping.
 
-   Figure 6: Synthesized representation of dff_const1.
+    Synthesized_dff_const1
+   
+    Figure 6: Synthesized representation of dff_const1.
 
    The synthesized result shows how the RTL flip-flop was represented using library cells.
 
@@ -305,7 +315,9 @@ The main topics covered were:
     show
    
     The design was examined after synthesis to observe how Yosys handled the constant sequential logic.
-   
+
+    Synthesized_dff_const2
+    
     Figure 7: Synthesized representation of dff_const2.
 
    
@@ -319,6 +331,8 @@ The main topics covered were:
    
     Figure 8: Simulation waveform of dff_const3.
 
+    Synthesized_dff_const3
+    
     The design was then synthesized using Yosys.
    
     yosys
@@ -334,7 +348,9 @@ The main topics covered were:
     abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
    
     show
-   
+
+    Synthesized_dff_const3
+    
     Figure 9: Synthesized representation of dff_const3.
 
     This experiment showed both the simulation behavior and synthesized implementation of the constant flip-flop design.
@@ -369,6 +385,8 @@ The main topics covered were:
    
     show
    
+    Synthesized_counter_opt
+    
     Figure 10: Synthesized representation of counter_opt.
 
     The output helps demonstrate how Yosys handles unused or unnecessary portions of a counter design.
@@ -387,6 +405,8 @@ The main topics covered were:
 
     This step was useful for examining the modified RTL implementation
 
+    Counter_opt2.v
+    
     Figure 11:Modified counter_opt2.v RTL design
 
     yosys
@@ -403,6 +423,8 @@ The main topics covered were:
    
     show
 
+    Synthesized_counter.opt2
+    
     Figure 12: Synthesized representation of the optimized counter_opt2 design.
 
     By comparing the original and optimized versions, the effect of removing unnecessary logic can be understood more clearly.
