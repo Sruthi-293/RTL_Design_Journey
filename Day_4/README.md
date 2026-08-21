@@ -130,7 +130,7 @@ The main topics covered were:
 
     show
 
-    ![Synthesized Counter](./images/Synthesized_counter_opt.jpeg)
+    ![Opt Check]()
     
     Figure 1: Optimized gate-level representation of the opt_check design.
 
