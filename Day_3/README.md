@@ -44,6 +44,7 @@ When async_reset is high, the output q is immediately forced to 0. When the rese
 
 The waveform was examined in GTKWave to verify the relationship between the clock, reset, input, and output signals.
 
+![Reset D Flip-Flop Design](./images/Figure_1.jpeg)
 Figure 1: Simulation waveform of the asynchronous-reset D flip-flop.
 
 1.2 Asynchronous Set D Flip-Flop
@@ -73,6 +74,7 @@ When async_set is active, the output q becomes 1 immediately. When the set signa
 
 The simulation waveform was used to observe the asynchronous set behavior and normal data transfer.
 
+![Asynchronous set D Flip-Flop Design](./images/Figure_2.jpeg)
 Figure 2: Simulation waveform of the asynchronous-set D flip-flop.
 
 1.3 Synchronous Reset D Flip-Flop
@@ -98,6 +100,7 @@ When sync_reset is high at the rising edge of the clock, the output q is set to 
 
 The simulation was used to verify that the reset affects the output only in synchronization with the clock.
 
+![Synchronous Reset D Flip-Flop Design](./images/Figure_3.jpeg)
 Figure 3: Simulation waveform of the synchronous-reset D flip-flop.
 
 ⸻
@@ -117,6 +120,7 @@ abc -liberty /address/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 The synthesized design was then viewed using the Yosys graphical representation.
 
+![Synthesized Flip-Flop Design](./images/Figure_4.jpeg)
 Figure 4: Synthesized gate-level representation of the flip-flop design.
 
 ⸻
@@ -154,6 +158,7 @@ write_verilog -noattr mul2_net.v
 gvim mul2_net.v
 The synthesized circuit was viewed using the Yosys show command.
 
+![mul2 Synthesis Flip-Flop Design](./images/Figure_5.jpeg)
 Figure 5: Synthesized representation of the mul2 design after optimization.
 
 ⸻
@@ -180,6 +185,7 @@ write_verilog -noattr mult8_net.v
 gvim mult8_net.v
 The resulting schematic was examined to understand how the original arithmetic operation was represented after synthesis.
 
+![mult8 Synthesis and optimization](./images/Figure_6.jpeg)
 Figure 6: Synthesized representation of the mult8 design after optimization.
 
 ⸻
@@ -198,6 +204,7 @@ gvim mult8_net.v
 
 Examining the synthesized Verilog helps in understanding how the original RTL description is transformed into a lower-level hardware representation.
 
+![Asynchronous Reset D Flip-Flop](./images/Figure_7.jpeg)
 Figure 7: Generated synthesized Verilog netlist obtained from Yosys.
 
 ⸻
