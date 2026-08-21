@@ -107,6 +107,8 @@ The relevant model files are:
 
 These files provide the behavioral models of the technology cells used by the synthesized netlist.
 
+![Designflow](images/design_flow.jpeg)
+
 Figure 1: Gate-Level Simulation environment and synthesized design flow.
 
 ⸻
@@ -142,6 +144,8 @@ The different MUX implementations were compared using:
 gvim ternary_operator_mux.v -o bad_mux.v -o good_mux.v
 
 This allows the different coding styles to be viewed side-by-side
+
+![Ternary Operators](images/Ternary_operatorscode.png)
 
 Figure 2: Comparison of MUX RTL coding styles using the ternary operator.
 
@@ -203,6 +207,8 @@ show
 
 This provides a graphical representation of the synthesized circuit.
 
+![Ternary Operator Diagram](images/ternary_operator.diagram.png)
+
 Figure 3: Synthesized gate-level representation of the ternary-operator MUX.
 
 The schematic provides a visual connection between the original RTL MUX and its synthesized hardware implementation.
@@ -224,6 +230,8 @@ tb_ternary_operator_mux.v
 gtkwave tb_ternary_operator_mux.vcd
 
 The synthesized netlist was simulated together with the technology-liberty models and the original testbench.
+
+![Blocking Caveat Waveform](images/blocking_caveat.waveform.png)
 
 Figure 4: Gate-Level Simulation waveform of the synthesized ternary MUX.
 
@@ -327,6 +335,8 @@ gvim bad_mux.v
 
 gvim blocking_caveat.v
 
+![Blocking Caveat Diagram](images/blocking_caveat.diagram.png)
+
 Figure 5: Verilog RTL code demonstrating the blocking-assignment caveat.
 
 The code was studied to understand how procedural assignment order can affect simulation behavior.
@@ -346,6 +356,8 @@ iverilog blocking_caveat.v tb_blocking_caveat.v
 gtkwave tb_blocking_caveat.vcd
 
 The resulting waveform was examined using GTKWave.
+
+![Blocking Caveat Waveform](images/blocking_caveat.waveform.png)
 
 Figure 6: Simulation waveform demonstrating the blocking-assignment behavior.
 
@@ -382,6 +394,8 @@ show
 16. 🧩 Synthesized Logic-Gate Representation
 
 The show command provided the synthesized gate-level representation.
+
+![Blocking Caveat Logic Gates](images/blocking_caveat.logicgates.png)
 
 Figure 7: Synthesized logic-gate representation of blocking_caveat.
 
