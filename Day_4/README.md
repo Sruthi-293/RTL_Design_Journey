@@ -130,7 +130,8 @@ The main topics covered were:
 
     show
     
-    ![Opt Check](images/opt_check.png) 
+    <img width="1853" height="737" alt="opt_check" src="https://github.com/user-attachments/assets/231dac1d-bf6d-4c39-91c1-8a46a043cf7a" />
+
 
     Figure 1: Optimized gate-level representation of the opt_check design.
     
