@@ -319,8 +319,8 @@ The main topics covered were:
    
     The design was examined after synthesis to observe how Yosys handled the constant sequential logic.
 
-    Synthesized_dff_const2
-    
+<img width="574" height="534" alt="7 Synthesized_dff_const2" src="https://github.com/user-attachments/assets/42a492d0-87a4-422c-9643-71409f186d55" />
+
     Figure 7: Synthesized representation of dff_const2.
 
    
@@ -332,9 +332,9 @@ The main topics covered were:
 
     The third flip-flop example was first simulated.
 
-    Figure 8: Simulation waveform of dff_const3.
+<img width="1600" height="768" alt="8 Waveform_dff_const3" src="https://github.com/user-attachments/assets/1c591f52-a77f-4cd2-bfd5-27b2449b8594" />
 
-    Waveform_dff_const3
+    Figure 8: Simulation waveform of dff_const3.
     
     The design was then synthesized using Yosys.
    
@@ -352,7 +352,8 @@ The main topics covered were:
    
     show
 
-    Synthesized_dff_const3
+
+<img width="1600" height="598" alt="9 Synthesized_dff_const3" src="https://github.com/user-attachments/assets/7ea5f961-3c6c-464a-a033-7c228dc0cb52" />
     
     Figure 9: Synthesized representation of dff_const3.
 
