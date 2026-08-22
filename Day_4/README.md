@@ -129,8 +129,8 @@ The main topics covered were:
     Step 7-Displaying the optimized design
 
     show
-    
-    <img width="1853" height="737" alt="opt_check" src="https://github.com/user-attachments/assets/231dac1d-bf6d-4c39-91c1-8a46a043cf7a" />
+
+<img width="1853" height="737" alt="opt_check" src="https://github.com/user-attachments/assets/de3ef38b-46e0-497b-9e6e-aecdb3aa8a6f" />
 
 
     Figure 1: Optimized gate-level representation of the opt_check design.
@@ -155,7 +155,8 @@ The main topics covered were:
     
     The RTL was synthesized, unnecessary logic was removed, and the remaining logic was mapped using the SKY130 library.
 
-    ![Opt Check](images/opt_check2.png)
+<img width="1847" height="823" alt="opt_check2" src="https://github.com/user-attachments/assets/a4db8f7a-7cdc-43d4-ac68-140d0fbaf05e" />
+
     
     Figure 2: Optimized representation of the opt_check2 design.
 
@@ -176,8 +177,8 @@ The main topics covered were:
     abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
     
     show
-
-    ![Opt Check](images/opt_check3.png)
+    
+<img width="1845" height="827" alt="opt_check3" src="https://github.com/user-attachments/assets/48b467ec-cfb8-4cb5-a072-8843b2608c74" />
     
     Figure 3: Optimized gate-level representation of the opt_check3 design.
 
@@ -199,7 +200,8 @@ The main topics covered were:
     
     show
 
-    ![Opt Check](images/opt_check4.png)
+<img width="1856" height="818" alt="opt_check4" src="https://github.com/user-attachments/assets/993811a9-d8dd-46e6-8be5-feffc6f2479a" />
+
     
     Figure 4: Optimized representation of the opt_check4 design.
 
@@ -263,7 +265,7 @@ The main topics covered were:
    
    gtkwave tb_dff_const1.vcd
 
-   Waveform_tb_diff_const1
+<img width="1831" height="928" alt="Waveform_tb_dff_const1" src="https://github.com/user-attachments/assets/cba24527-f01c-47ec-810f-1c439c2deba7" />
    
    Figure 5: Simulation waveform of the dff_const1 design.
 
@@ -295,8 +297,8 @@ The main topics covered were:
 
    The abc command performs logic optimization and technology mapping.
 
-    Synthesized_dff_const1
-   
+<img width="1600" height="738" alt="Synthesized_dff_const1" src="https://github.com/user-attachments/assets/7ea6db8d-eb08-4b2a-b448-40a512f2e418" />
+
     Figure 6: Synthesized representation of dff_const1.
 
    The synthesized result shows how the RTL flip-flop was represented using library cells.
@@ -329,10 +331,10 @@ The main topics covered were:
 11. dff_const3 Simulation and Synthesis 🧪
 
     The third flip-flop example was first simulated.
-   
+
     Figure 8: Simulation waveform of dff_const3.
 
-    Synthesized_dff_const3
+    Waveform_dff_const3
     
     The design was then synthesized using Yosys.
    
@@ -386,8 +388,8 @@ The main topics covered were:
    
     show
    
-    Synthesized_counter_opt
-    
+<img width="1280" height="498" alt="Synthesized_counter_opt" src="https://github.com/user-attachments/assets/fc370d20-3787-455b-a28c-fcb0a167a6a4" />
+ 
     Figure 10: Synthesized representation of counter_opt.
 
     The output helps demonstrate how Yosys handles unused or unnecessary portions of a counter design.
@@ -406,8 +408,8 @@ The main topics covered were:
 
     This step was useful for examining the modified RTL implementation
 
-    Counter_opt2.v
-    
+<img width="1280" height="495" alt="counter_opt2 v" src="https://github.com/user-attachments/assets/eb68a682-65ca-4e0e-8aad-573d9dade3ba" />
+
     Figure 11:Modified counter_opt2.v RTL design
 
     yosys
@@ -424,8 +426,8 @@ The main topics covered were:
    
     show
 
-    Synthesized_counter.opt2
-    
+ <img width="1280" height="498" alt="Synthesized_counter_opt2" src="https://github.com/user-attachments/assets/e1915f00-8d24-45bf-abb0-07555341a544" />
+
     Figure 12: Synthesized representation of the optimized counter_opt2 design.
 
     By comparing the original and optimized versions, the effect of removing unnecessary logic can be understood more clearly.
