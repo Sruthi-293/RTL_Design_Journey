@@ -99,10 +99,39 @@ Topics covered:
 * Yosys synthesized netlist verification
 * Waveform comparison and analysis
 
-➡️ [Go to Day 4](./Day_4/README.md)
+➡️ [Go to Day 5](./Day_5/README.md)
 
 ⸻
 
+🟪 Day 6 — Synthesis Optimization & Efficient RTL Design
+
+Topics covered:
+
+* Introduction to Synthesis Optimization
+* Incomplete IF Statement
+* Latch Inference in Combinational Logic
+* RTL Schematic Analysis using Yosys
+* RTL Simulation and Waveform Analysis
+* Incomplete IF-ELSE Statement
+* Incomplete Case Statement
+* Complete Case Statement
+* Partial Case Assignment
+*Bad Case Assignment
+* Multiplexer (MUX) Verification
+*Demultiplexer (DEMUX) Verification
+* Ripple Carry Adder
+* Combinational Logic Optimization
+* Redundant Logic Removal
+* Resource Optimization
+* RTL-to-Gate-Level Synthesis
+* Yosys Synthesis and Optimization
+* SKY130 Standard-Cell Technology Mapping
+* GTKWave Waveform Verification
+* Comparison of RTL and Synthesized Hardware
+
+➡️ [Go to Day 6](./Day_6/README.md)
+
+⸻
 🛠️ Tools Used
 
 Tool	Purpose
@@ -135,7 +164,8 @@ Linux Terminal	Running EDA Commands
     * images/
 * Day_5/
     * README.md
-
+*Day_6/
+    * README.md
 
 ⸻
 
