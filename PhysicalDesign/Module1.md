@@ -8,6 +8,7 @@ In this module, I explored the ASIC physical-design environment using open-sourc
 
 
 🎯 Objectives
+
 .Understand the ASIC Physical Design flow.
 .Learn floorplanning and power planning.
 .Study placement and CTS.
