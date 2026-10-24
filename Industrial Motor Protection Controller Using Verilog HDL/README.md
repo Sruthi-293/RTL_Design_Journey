@@ -299,7 +299,18 @@ Industrial_Motor_Protection_Controller/
 
 **Source file:** `rtl/motor_protection_controller.v`
 
+**RTL CODE:**
+
+<img width="992" height="875" alt="rtlcode1" src="https://github.com/user-attachments/assets/893b6290-6d78-442b-a8b1-467da6cd3414" />
+<img width="977" height="536" alt="rtlcode2" src="https://github.com/user-attachments/assets/15313494-8f1f-4179-a229-3463a7d98c70" />
+
 The RTL describes the FSM, motor-enable logic, fault detection, fault latching, reset handling, and fault-code generation.
+
+**TESTBENCH CODE:**
+
+<img width="982" height="856" alt="tb1" src="https://github.com/user-attachments/assets/63f590bb-76c9-4dd9-b3ff-ffd6c313dac9" />
+<img width="966" height="851" alt="tb2" src="https://github.com/user-attachments/assets/cf58b070-2935-4dbf-a7ab-99759b42f1de" />
+<img width="821" height="887" alt="tb3" src="https://github.com/user-attachments/assets/96761fd7-f515-404d-b31b-e9a4cf6611b8" />
 
 The design is used as the input to simulation and synthesis.
 
